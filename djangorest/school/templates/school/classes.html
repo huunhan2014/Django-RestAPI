@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schools Index</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script>
+        function back() {
+            window.history.back();
+        }
+    </script>
+    <style>
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #0aa4d1;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+<h2 data-bind="text: school"></h2>
+
+{% if school.classes_set.all %}
+
+    <ol data-bind="foreach: classes">
+        <li><a data-bind="attr: { href: link, title: name}, text: name"></a></li>
+    </ol>
+    <a href="#" id="back" onclick="back()"> Back to school list </a>
+
+{% else %}
+
+    <p>no class available</p>
+
+{% endif %}
+
+
+
+
+
+<script>
+    function AppViewModel() {
+        this.classes = [
+            {% for class in school.classes_set.all %}
+                {name: "{{ class.name_class }}", link: "/school/{{ school.id }}/{{ class.id }}"},
+            {% endfor %}
+
+        ];
+        this.school = "{{ school.name_text }}";
+    }
+
+    ko.applyBindings(new AppViewModel());
+
+</script>
+
+</body>
+</html>

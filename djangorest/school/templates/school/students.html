@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schools Index</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script>
+        function back() {
+            window.history.back();
+        }
+    </script>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        span {
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #0aa4d1;
+        }
+
+        body {
+            counter-reset: number;
+        }
+
+        #number::before {
+            counter-increment: number;
+            content: counter(number);
+        }
+    </style>
+</head>
+
+<body>
+
+
+<h2 data-bind="text: classes"></h2>
+{#{% if classes.students_set.all %}#}
+<div data-bind="visible: students.length > 0">
+    <table>
+        <thead>
+        <tr>
+            <th> STT</th>
+            <th> Name</th>
+            <th> Birth Date</th>
+            <th> Sex</th>
+        </tr>
+        </thead>
+        <tbody data-bind="foreach: students">
+        <tr>
+            <td id="number"></td>
+            <td data-bind="text: name"></td>
+            <td data-bind="text: birth_date"></td>
+            <td data-bind="text: sex"></td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    ToTal: <span data-bind="text: students.length"></span> Student
+    <br>
+</div>
+
+{#{% else %}#}
+<div data-bind="visible: students.length <= 0">
+    <p>no student available</p>
+</div>
+{#{% endif %}#}
+
+<a href="#" id="back" onclick="back()"> Back </a>
+
+<script>
+    let stt = 0;
+
+    function AppViewModel() {
+        this.students = [
+            {% for student in classes.students_set.all %}
+                {name: "{{ student.name_student }}", birth_date: "{{ student.birth_date }}", sex: "{{ student.sex }}"},
+            {% endfor %}
+        ];
+        this.classes = "{{ classes.name_student }}";
+
+    }
+
+    ko.applyBindings(new AppViewModel());
+
+</script>
+</body>
+</html>

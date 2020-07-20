@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schools Index</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <style>
+        a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #0aa4d1;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2> Category of School </h2>
+
+{% if school_list %}
+    <ol data-bind="foreach: school">
+        <li><a data-bind="attr:{ href: link, title: name}, text: name"></a></li>
+    </ol>
+{% else %}
+    <p>No schools are available.</p>
+{% endif %}
+
+<script>
+    function School(name, id) {
+        const self = this;
+        self.name = name;
+        self.link = "/school/" + id;
+    }
+
+    function ReservationsViewModel() {
+        const self = this;
+
+        // Editable data
+
+        self.school = ko.observableArray([
+            {% for school in school_list %}
+                new School("{{ school.name_school }}", "{{ school.id }}"),
+            {% endfor %}
+        ]);
+
+    }
+
+    ko.applyBindings(new ReservationsViewModel());
+</script>
+
+</body>
+</html>

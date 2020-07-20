@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Student</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script>
+        function back() {
+            window.history.back();
+        }
+    </script>
+</head>
+<body>
+    <form data-bind="submit: doSomething">
+    ... form contents go here ...
+    <button type="submit">Submit</button>
+</form>
+</body>
+<script type="text/javascript">
+    var viewModel = {
+        doSomething : function(formElement) {
+            // ... now do something
+        }
+    };
+
+</script>
+</html>
