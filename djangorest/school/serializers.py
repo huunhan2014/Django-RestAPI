@@ -14,9 +14,9 @@ class ClassSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-class StudentSerializer(serializers.HyperlinkedModelSerializer):
+class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Students
-        fields = '__all__'
+        fields = ['id', 'name_student', 'classes']
 
 

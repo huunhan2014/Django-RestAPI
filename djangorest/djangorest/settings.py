@@ -45,7 +45,7 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 3,
+    # 'PAGE_SIZE': 3,
     
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
@@ -88,8 +88,15 @@ WSGI_APPLICATION = 'djangorest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'options': '-c search_path=test'
+        },
+        'NAME': 'test_db',
+        'USER': 'ed_core_data_dev',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '6543',
     }
 }
 
