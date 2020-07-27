@@ -21,7 +21,6 @@ class Schools(models.Model):
 class Classes(models.Model):
     name_class = models.CharField(max_length=200, null=False)
     grade = models.IntegerField(default=0, null=False)
-    schools = models.ForeignKey(Schools, on_delete=models.CASCADE, null=False)
 
     def __str__(self):
         return self.name_class

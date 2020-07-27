@@ -16,8 +16,8 @@ class StudentInline(admin.TabularInline):
 
 
 class ClassesAdmin(admin.ModelAdmin):
-    list_display = ('name_class', 'grade', 'schools')
-    list_filter = ['schools', 'grade']
+    list_display = ('name_class', 'grade')
+    list_filter = ['grade']
     search_fields = ['name_class']
     inlines = [StudentInline]
 
@@ -27,13 +27,13 @@ class ClassesInline(admin.TabularInline):
     extra = 2
 
 
-class SchoolsAdmin(admin.ModelAdmin):
-    list_display = ('name_school', 'grade')
-    list_filter = ['grade']
-    search_fields = ['name_school']
-    inlines = [ClassesInline]
+# class SchoolsAdmin(admin.ModelAdmin):
+#     list_display = ('name_school', 'grade')
+#     list_filter = ['grade']
+#     search_fields = ['name_school']
+#     inlines = [ClassesInline]
 
 
-admin.site.register(Schools, SchoolsAdmin)
+# admin.site.register(Schools, SchoolsAdmin)
 admin.site.register(Classes, ClassesAdmin)
 admin.site.register(Students, StudentAdmin)

@@ -25,7 +25,7 @@ SECRET_KEY = 'sg7!)yy@xetq7_(sd9hr)gz4%6l#z$l7vh!tx$l@7&nlbf33s4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "192.168.75.11", "192.168.75.15"]
 
 
 # Application definition
@@ -89,14 +89,11 @@ WSGI_APPLICATION = 'djangorest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'OPTIONS': {
-            'options': '-c search_path=test'
-        },
-        'NAME': 'test_db',
-        'USER': 'ed_core_data_dev',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '6543',
+        'NAME': 'db1',
+        'USER': 'test',
+        'PASSWORD': 'test',
+        'HOST': 'djangoDB',
+        'PORT': '5432',
     }
 }
 
