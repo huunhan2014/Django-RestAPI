@@ -25,7 +25,7 @@ SECRET_KEY = 'sg7!)yy@xetq7_(sd9hr)gz4%6l#z$l7vh!tx$l@7&nlbf33s4'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["0.0.0.0", "192.168.75.11", "192.168.75.15"]
 
 
 # Application definition
@@ -87,6 +87,10 @@ WSGI_APPLICATION = 'djangorest.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'OPTIONS': {
@@ -96,10 +100,9 @@ DATABASES = {
         'USER': 'ed_core_data_dev',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '6543',
+        'PORT': '8453',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

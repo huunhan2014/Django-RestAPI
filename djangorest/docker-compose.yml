@@ -18,3 +18,36 @@
         - "8000:8000"
       depends_on:
         - db
+
+#  version: '3'
+#
+#  services:
+#    web:
+#      build: .
+#      volumes:
+#        - .:/code
+#      ports:
+#        - "8000:8000"
+#      depends_on:
+#        - djangoDB
+#      links:
+#        - djangoDB
+#      deploy:
+#        resources:
+#          limits:
+#            cpus: '1'
+#            memory: 2048M
+#
+#    djangoDB:
+#      image: postgres
+#      environment:
+#        - POSTGRES_DB=db1
+#        - POSTGRES_USER=test
+#        - POSTGRES_PASSWORD=test
+#      ports:
+#        - "5406:5432"
+#      deploy:
+#        resources:
+#          limits:
+#            cpus: '1'
+#            memory: 1024M

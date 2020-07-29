@@ -35,4 +35,9 @@ urlpatterns = [
     # Polls App
     path('polls/', include('polls.urls')),
 
+    # path('classes/', school_views.index_class, name='index_class'),
+    # path('classes/<int:classes_id>/', school_views.class_detail, name='classList'),
+    # path('classes/add/', school_views.ClassViewSet.as_view(), name='classAdd'),
+    # path('append/', school_views.put_class, name='index_class'),
+
 ]
